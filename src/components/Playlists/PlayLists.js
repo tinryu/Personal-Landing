@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import { DB_CONFIG } from '../../config/initalFirebase';
+import database from '../../firebase/firebase.js';
 import './PlayLists.css';
-import firebase from 'firebase/app';
-// import 'firebase/auth';
-// import 'firebase/firestore';
-import 'firebase/database';
+import Swal from 'sweetalert2';
 
-function PlayLists(props) {
-    if (!firebase.apps.length) {
-        firebase.initializeApp(DB_CONFIG);
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
-
+})
+function PlayLists(props) {
     const [lists, getLists] = useState([]);
 
     function openPlaylist(idList) {
@@ -20,35 +24,51 @@ function PlayLists(props) {
         }
         props.openPlaylist(obj);
     }
-
     function delPlaylist(id) {
-        var obj = {
-            idList: id,
-            isUpdate: 1
-        }
-        props.openPlaylist(obj);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                var obj = {
+                    idList: id,
+                    isUpdate: 1
+                }
+                props.openPlaylist(obj);
+                Toast.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
+    async function getDatabase() {
+        var data = await database.ref('lists').once('value').then(function (snapshot) {
+            return snapshot.val();
+        })
+        var da = Object.entries(data).map(function(item) {
+            item[1].id = item[0];
+            return item;
+        })
+        var arr = da.map((k) => k[1]);
+        //Convert Object to Array
+        // var arr = Object.keys(data).map((k) => data[k]);
+        getLists(arr);
+        return arr;
     }
     useEffect(() => {
         const interval = setInterval(() => {
             getDatabase()
         },1000);
         return () => clearInterval(interval);
-
-        async function getDatabase() {
-            var data = await firebase.database().ref('lists').once('value').then(function (snapshot) {
-                return snapshot.val();
-            })
-            var da = Object.entries(data).map(function(item) {
-                item[1].id = item[0];
-                return item;
-            })
-            var arr = da.map((k) => k[1]);
-            //Convert Object to Array
-            // var arr = Object.keys(data).map((k) => data[k]);
-            getLists(arr);
-            return arr;
-        }
     }, []);
+    
 
     return (
         <div className="containerList">

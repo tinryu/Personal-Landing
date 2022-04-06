@@ -1,25 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import './Player.css';
+import database from '../../firebase/firebase.js';
 import PlayLists from '../Playlists/PlayLists';
 import FormSaveList2 from '../FormSaveList2/FormSaveList2';
 import Tutorial from '../Tutorial/Tutorial';
-import { DB_CONFIG } from '../../config/initalFirebase';
-import Swal from 'sweetalert2';
-import firebase from 'firebase/app';
-import 'firebase/database';
+
+const apiKey = process.env.REACT_APP_API_KEY_YT;
 var repeat = document.getElementsByClassName('btn-repeat')[0];
 var rand;
 var repeatStatus = 0;
 
-const apiKey = "AIzaSyBpWzOG4MdimDEzLB4xHk77On77xh6zuWo";
-
 class Player extends React.Component {
 	constructor(props) {
 		super(props);
-		if (!firebase.apps.length) {
-            firebase.initializeApp(DB_CONFIG);
-        }
 		this.state = this.initialState;
 		this.changeStatusPlay = this.changeStatusPlay.bind(this);
 		this.prevSong = this.prevSong.bind(this);
@@ -99,13 +94,23 @@ class Player extends React.Component {
 			})
 		}
 	}
-
+	openSongs = () => {
+		if(this.state.isToggleSong) {
+			this.setState({
+				isToggleSong: false
+			})
+		} else {
+			this.setState({
+				isToggleSong: true
+			})
+		}
+	}
 	openPlaylist = (obj) => {
 		if(obj && obj.isUpdate === 0){
 			this.changePlaylistId(obj.idList);
 		}
 		else if(obj && obj.isUpdate === 1){
-			let objRef = firebase.database().ref('lists/'+obj.idList);
+			let objRef = database.ref('lists/'+obj.idList);
 			objRef.remove();
 		}
 	}
@@ -312,6 +317,15 @@ class Player extends React.Component {
 			repeatStatus = 0;
 		}
 	}
+	playSongOnList = (rand, id) => {
+		this.player.loadVideoById({videoId: id});
+		this.setState({
+			title: this.state.listVid[rand].title,
+			imageUrl: `https://img.youtube.com/vi/`+this.state.listVid[rand].idVid+`/0.jpg`
+		})
+		this.playButton(true);
+		this.openSongs(false);
+	}
 	changePlaylistId = async newId => {
 		if (newId === "") {
 			return;
@@ -390,11 +404,24 @@ class Player extends React.Component {
         return (
 			<div className="player">
 				<div id="player"></div>
-				<div className="vinyl-player">
-					<div className="nametag" id="bgnametag" style={divStyle}></div>
-					<img src={process.env.PUBLIC_URL +"assets/icon/kim.svg"} alt="" id="kim" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
-					<img src={process.env.PUBLIC_URL +"assets/icon/circel.svg"} alt="" id="circel" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
+				<div className="vinyl-player" style={{display: this.state.isToggleList ? 'none' : 'block'}}>
+					<div className="medias" style={{display: this.state.isToggleSong ?  'none': 'block'}}>
+						<div className="nametag" id="bgnametag" style={divStyle}></div>
+						<img src={process.env.PUBLIC_URL +"assets/icon/kim.svg"} alt="" id="kim" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
+						<img src={process.env.PUBLIC_URL +"assets/icon/circel.svg"} alt="" id="circel" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
+						<img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/music.svg"} alt="open" id="open" title="music lists"/>
+					</div>
 				</div>
+				<div className="songs" style={{display: this.state.isToggleSong ?  'block': 'none'}}>
+						<img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/cancel.png"} alt="open" id="close" title="close"/>
+						<div className="containerSongs">
+							{this.state.listVid.map((item, key) =>
+								<div className="itemList" key={key}>
+									<a href="#s" onClick={() => this.playSongOnList(key,item.idVid)}>{item.title}</a> 
+								</div>
+							)}
+						</div>
+					</div>
 				<div className="feaList" style={{display: this.state.isToggleList ? 'block' : 'none'}}>
 					<PlayLists openPlaylist={this.openPlaylist}/>
 				</div>

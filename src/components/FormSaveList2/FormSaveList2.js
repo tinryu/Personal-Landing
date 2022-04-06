@@ -1,11 +1,7 @@
 import React from 'react';
-import firebase from "firebase/app";
-// import "firebase/auth";
-// import "firebase/firestore";
-import 'firebase/database';
+import database from '../../firebase/firebase.js';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { DB_CONFIG } from '../../config/initalFirebase';
 import './FormSaveList2.css';
 
 const MySwal = withReactContent(Swal);
@@ -39,9 +35,6 @@ let addForm = {
 class FormSaveList2 extends React.Component {
     constructor(props) {
         super(props);
-        if (!firebase.apps.length) {
-            this.app = firebase.initializeApp(DB_CONFIG);
-        }
         this.openFormAdd = this.openFormAdd.bind(this);
     }
     randString(l) {
@@ -73,7 +66,7 @@ class FormSaveList2 extends React.Component {
             else {
                 if (v && v.inputName && v.inputId || v === 'cancel') { // eslint-disable-line
                     if (v !== 'cancel') {
-                        firebase.database().ref('lists/' + this.randString(10)).set({
+                        database().ref('lists/' + this.randString(10)).set({
                             name: v.inputName,
                             listId : this.convertLink(v.inputId)
                         }, function(error) {
