@@ -1,0 +1,53 @@
+.calendar {
+    width: 450px;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px 10px 0 10px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border: 0.1px solid rgba(255, 255, 255, 0.75);
+	/* box-shadow: 0px 10px 40px -15px rgba(58, 214, 253, 0.897); */
+	/* background: rgba(255, 255, 255, 0.4); */
+	border-bottom: 0px;
+    div {
+        width: 33.3%;
+        /* border-bottom: 1px solid; */
+        float: left;
+    }
+    #days {
+        font-size: 1ch;
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+    }
+    #months {
+        font-size: 1rem;
+        color: #000;
+        text-shadow: 0 0 15px rgba(255,255,255,0.75);
+        background: whitesmoke;
+    }
+    #years {
+        font-size: 1rem;
+	    text-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+    }
+}
+
+@media (max-height: 414px) {
+	.calendar {
+		padding: 15px 30px;
+		width: 100%;
+	}
+}
+@media (max-width: 576px) {
+	.calendar {
+		width: 90%;
+        #days , #month, #years{
+            font-size: 0.7em;
+        }
+        #clock {
+            font-size: 1em;
+            span {
+                width: 30px;
+                height: 30px;
+            }
+        }
+	}
+}

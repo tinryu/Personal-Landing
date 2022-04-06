@@ -1,0 +1,131 @@
+.feaList {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.feaList .containerList {
+  width: 100%;
+  height: 220px;
+  overflow-x: hidden;
+  -webkit-animation: hue-box-shadow 5s linear infinite;
+          animation: hue-box-shadow 5s linear infinite;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.feaList .containerList .itemList {
+  position: relative;
+  padding: 5px;
+  border-bottom: 1px dashed;
+  margin: 0 10px;
+}
+
+.feaList .containerList .itemList p {
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+  overflow: hidden;
+  padding: 3px 10px;
+  text-align: left;
+  color: #F1F2F4;
+}
+
+.feaList .containerList .itemList .tool-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.feaList .containerList .itemList .tool-btn button {
+  margin: 0;
+  background: transparent;
+  border: 0;
+  color: #F1F2F4;
+}
+
+.feaList .containerList .itemList .openPlayList #open {
+  margin-right: 10px;
+}
+
+.feaList .containerList .itemList .openPlayList img {
+  -webkit-filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+          filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+  width: 25px;
+}
+
+.feaList .containerList .itemList .openPlayList img :hover {
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.feaList .containerList .itemList .delPlayList img {
+  -webkit-filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+          filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+  width: 22px;
+}
+
+.feaList .containerList .itemList .delPlayList img :hover {
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+@-webkit-keyframes rotate-circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes hue-box-shadow {
+  0% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #fad400;
+    box-shadow: inset -1px 0px 5px 1px #fad400;
+  }
+  40% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #fa9600;
+    box-shadow: inset -1px 0px 5px 1px #fa9600;
+  }
+  80% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #00fa60;
+    box-shadow: inset -1px 0px 5px 1px #00fa60;
+  }
+  100% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #004ffa;
+    box-shadow: inset -1px 0px 5px 1px #004ffa;
+  }
+}
+
+@keyframes hue-box-shadow {
+  0% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #fad400;
+    box-shadow: inset -1px 0px 5px 1px #fad400;
+  }
+  40% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #fa9600;
+    box-shadow: inset -1px 0px 5px 1px #fa9600;
+  }
+  80% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #00fa60;
+    box-shadow: inset -1px 0px 5px 1px #00fa60;
+  }
+  100% {
+    -webkit-box-shadow: inset -1px 0px 5px 1px #004ffa;
+    box-shadow: inset -1px 0px 5px 1px #004ffa;
+  }
+}
+/*# sourceMappingURL=Playlists.css.map */

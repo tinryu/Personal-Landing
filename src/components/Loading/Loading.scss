@@ -1,0 +1,183 @@
+#Loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: url(../../assets/bg/ringtone-1s-1084px.svg) repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: row;
+    opacity: 1;
+    &.hide{
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0s 2s, opacity 0.4s linear;
+    }
+    img {
+        width: 150px;
+        #reindeer,
+        #santa{
+            animation: bounceAlt 2s infinite alternate;
+        }
+        #bell{
+            animation: jingle 0.9s infinite alternate;
+        }
+    }
+}
+
+@keyframes bell {
+    0%{
+        transform: rotate(30deg);
+    }
+    10%{
+        transform: rotate(16deg);
+    }
+    20%{
+        transform: rotate(14deg);
+    }
+    30%{
+        transform: rotate(12deg);
+    }
+    40%{
+        transform: rotate(10deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    60%{
+        transform: rotate(-10deg);
+    }
+    70%{
+        transform: rotate(-12deg);
+    }
+    80%{
+        transform: rotate(-14deg);
+    }
+    90%{
+        transform: rotate(-16deg);
+    }
+    100%{
+        transform: rotate(-30deg);
+    }
+}
+@keyframes jingle {
+  0% {
+    animation-timing-function: cubic-bezier(0.146,0.2111,0.5902,1.3204);
+    transform: rotate(0deg);
+  }
+  11% {
+    animation-timing-function: cubic-bezier(0.1079,0.1992,-0.6462,0.828);
+    transform: rotate(7.61deg);
+  }
+  23% {
+    animation-timing-function: cubic-bezier(0.0504,0.0951,0.0163,0.9677);
+    transform: rotate(-5.789999999999999deg);
+  }
+  36% {
+    animation-timing-function: cubic-bezier(0.0475,0.0921,0.3134,1.0455);
+    transform: rotate(3.35deg);
+  }
+  49% {
+    animation-timing-function: cubic-bezier(0.0789,0.1565,0.3413,1.0972);
+    transform: rotate(-1.9300000000000002deg);
+  }
+  62% {
+    animation-timing-function: cubic-bezier(0.141,0.2885,0.406,1.1519);
+    transform: rotate(1.12deg);
+  }
+  75% {
+    animation-timing-function: cubic-bezier(0.226,0.4698,0.5031,1.1722);
+    transform: rotate(-0.64deg);
+  }
+  88% {
+    animation-timing-function: cubic-bezier(0.3121,0.5521,0.5655,0.8997);
+    transform: rotate(0.37deg);
+  }
+  100% {
+    transform: rotate(-0.28deg);
+  }
+}
+@keyframes bounceAlt {
+  0% {
+    animation-timing-function: cubic-bezier(0.1348,0.3256,0.2495,0.8687);
+    transform: translate(0, 0px);
+  }
+  51% {
+    animation-timing-function: cubic-bezier(0.7426,0.1782,0.8523,0.6514);
+    transform: translate(0, -14px);
+  }
+  100% {
+    transform: translate(0, 0px);
+  }
+}
+@keyframes heartbeat {
+  0% {
+    animation-timing-function: cubic-bezier(0.1678,0.6042,0.5465,3.0859);
+    transform: scale(1.3);
+  }
+  30% {
+    animation-timing-function: cubic-bezier(0.3206,0.3435,0.6825,0.6598);
+    transform: scale(1.15);
+  }
+  31% {
+    animation-timing-function: cubic-bezier(0.2811,0.5061,0.5347,0.909);
+    transform: scale(1.1458);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes grow-ttb-in {
+  0% {
+    animation-timing-function: cubic-bezier(0.1006,0.3357,-0.2396,0.6703);
+    transform: translate(0px,-49.75px) rotate(0deg) scale(1,0.005) skewX(0deg) skewY(0deg);
+    opacity: 0;
+  }
+  2% {
+    animation-timing-function: cubic-bezier(0.2668,0.6542,0.5372,0.8035);
+    transform: translate(0px,-31.2px) rotate(0deg) scale(1,0.376) skewX(0deg) skewY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0px,0px) rotate(0deg) scale(1,1) skewX(0deg) skewY(0deg);
+    opacity: 1;
+  }
+}
+@keyframes rotate-kim {
+  0%{
+      transform: rotate(2deg);
+  }
+  40%{
+    transform: rotate(4deg);
+  }
+  50%{
+      transform: rotate(3deg);
+  }
+  100%{
+      transform: rotate(2deg);
+  }
+}
+
+@keyframes radiant-color {
+  0%{
+    background: linear-gradient(30deg, rgba(232,208,19,1) 0%, rgb(182, 224, 127) 71%);
+  }
+  20%{
+    background: linear-gradient(45deg, rgba(153,190,0,1) 0%, rgba(218,230,123,1) 71%);
+  }
+  40%{
+    background: linear-gradient(90deg, rgba(224,193,4,1) 0%, rgba(214,65,13,1) 71%);
+  }
+  80%{
+    background: linear-gradient(180deg, rgba(128,21,0,1) 0%, rgba(193,2,60,1) 71%);
+  }
+  100%{
+    background: linear-gradient(360deg, rgb(232, 86, 19) 0%, rgb(85, 7, 30) 71%);
+  }
+}

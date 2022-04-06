@@ -1,0 +1,110 @@
+.switch {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 20;
+}
+
+.switch button {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 45px;
+  width: 45px;
+  background-color: #0000;
+  border: none;
+  bottom: 10px;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 50px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.switch button:hover + div {
+  opacity: 1;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+.switch button:hover {
+  opacity: 0;
+}
+
+.switch button:hover img {
+  opacity: 0.9;
+  -webkit-filter: none;
+          filter: none;
+}
+
+.switch button img {
+  width: 80%;
+  opacity: 0.8;
+  -webkit-filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+          filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  opacity: 0;
+  position: fixed;
+  bottom: -10px;
+  left: 20px;
+  padding: 30px 20px 30px 0;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  z-index: 999;
+}
+
+.form:hover {
+  opacity: 1;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+.form .input {
+  outline: none;
+  padding-left: 15px;
+  border: none;
+  border-radius: 15px;
+  width: 300px;
+  height: 35px;
+  margin-right: 15px;
+}
+
+.form .ok {
+  display: block;
+  background-color: #0000;
+  border: none;
+  outline: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.form .ok img {
+  width: 40px;
+  -webkit-filter: invert(100%) sepia(5%) saturate(0%) hue-rotate(6deg) brightness(104%) contrast(102%);
+          filter: invert(100%) sepia(5%) saturate(0%) hue-rotate(6deg) brightness(104%) contrast(102%);
+}
+
+.form .ok:hover img {
+  cursor: pointer;
+  -webkit-filter: invert(52%) sepia(99%) saturate(7%) hue-rotate(360deg) brightness(102%) contrast(107%);
+          filter: invert(52%) sepia(99%) saturate(7%) hue-rotate(360deg) brightness(102%) contrast(107%);
+}
+
+.form .ok:active img {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+}
+
+@media (max-width: 576px) {
+  .form .input {
+    width: 70vw;
+  }
+}
+/*# sourceMappingURL=FormAdd.css.map */
