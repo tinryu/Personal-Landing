@@ -1,0 +1,16 @@
+.form-tutorial {
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+    color: cornflowerblue;
+    li{
+        margin-bottom: 5px;
+        padding-left: 5px;
+        text-transform: lowercase;
+        i{
+            color: crimson;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    }
+}
