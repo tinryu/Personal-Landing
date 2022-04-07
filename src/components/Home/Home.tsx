@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -46,6 +45,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop: any) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
+  boxShadow: 'none',
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -90,9 +90,10 @@ export default function Home() {
                     aria-label="open drawer"
                     onClick={handleDrawerOpen}
                     edge="start"
+                    size="medium"
                     sx={{ mr: 2, ...(open && { display: 'none' }) }}
                 >
-                    <MenuIcon />
+                <MenuIcon />
                 </IconButton>
             </Toolbar>
         </AppBar>

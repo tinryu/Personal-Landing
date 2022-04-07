@@ -21,7 +21,6 @@ function App() {
   
   return (
     <div className="App">
-      <Nav/>
       <Loading isLoad={state.isLoading}/>
       <Routes>
         <Route path="/" element={<Home />} />
