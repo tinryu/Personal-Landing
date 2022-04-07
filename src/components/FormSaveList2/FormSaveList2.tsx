@@ -5,32 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 import './FormSaveList2.css';
 
 const MySwal = withReactContent(Swal);
-let addForm = {
-    title: 'Create PlayList Youtube List',
-    showCloseButton: true,
-    // allowOutsideClick: true,
-    // allowEscapeKey: true,
-    showClass: {
-        popup: 'swal2-show',
-        backdrop: 'swal2-backdrop-show',
-        icon: 'swal2-icon-show'
-    },
-    hideClass: {
-        popup: 'swal2-hide',
-        backdrop: 'swal2-backdrop-hide',
-        icon: 'swal2-icon-hide'
-    },
-    html:
-        "<div class='addList'>" +
-            "<input class='inputName' id='inputName' type='text' placeholder='Playlist Name'/>" +
-            "<input class='inputId' id='inputId' type='text' placeholder='Playlist ID'/>" +
-        "</div>",
-    focusConfirm: false,
-    preConfirm: () => ({
-        inputName: document.getElementById('inputName'),
-        inputId: document.getElementById('inputId')
-    })
-}
+
 class FormSaveList2 extends React.Component {
     constructor(props: any) {
         super(props);
@@ -57,6 +32,35 @@ class FormSaveList2 extends React.Component {
 
     openFormAdd = () => {
         const addLsit = async () => {
+            const inputNameVal = (document.getElementById('inputName') as HTMLInputElement)? (document.getElementById('inputName') as HTMLInputElement).value : null;
+            const inputIdVal = (document.getElementById('inputId') as HTMLInputElement)? (document.getElementById('inputId') as HTMLInputElement).value : null;
+            
+            let addForm = {
+                title: 'Create PlayList Youtube List',
+                showCloseButton: true,
+                // allowOutsideClick: true,
+                // allowEscapeKey: true,
+                showClass: {
+                    popup: 'swal2-show',
+                    backdrop: 'swal2-backdrop-show',
+                    icon: 'swal2-icon-show'
+                },
+                hideClass: {
+                    popup: 'swal2-hide',
+                    backdrop: 'swal2-backdrop-hide',
+                    icon: 'swal2-icon-hide'
+                },
+                html:
+                    "<div class='addList'>" +
+                        "<input class='inputName' id='inputName' type='text' placeholder='Playlist Name'/>" +
+                        "<input class='inputId' id='inputId' type='text' placeholder='Playlist ID'/>" +
+                    "</div>",
+                focusConfirm: false,
+                preConfirm: () => ({
+                    inputName: inputNameVal,
+                    inputId: inputIdVal
+                })
+            }
             const swalval = await MySwal.fire(addForm);
             let v: any = (swalval && swalval.value) || swalval.dismiss; // eslint-disable-next-line
             if(v === 'close' || v === 'backdrop' || v === 'esc') {
