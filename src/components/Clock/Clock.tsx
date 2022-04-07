@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Clock.css';
 
-function checkTime(i) {
+function checkTime(i: string | number) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
 }   
@@ -21,7 +21,7 @@ function Clock() {
     })
 
     return (
-        <div id = "clock">
+        <div id="clock">
             <span>{date.getHours()}</span>:
             <span>{checkTime(date.getMinutes())}</span>:
             <span>{checkTime(date.getSeconds())}</span>

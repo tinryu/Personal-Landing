@@ -25,25 +25,17 @@ let Form = {
         "</div>",
     focusConfirm: false,
 }
-class FormSaveList2 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.openForm = this.openForm.bind(this);
-    }
-
-    openForm = () => {
+function Tutorial(){
+    function openForm(){
         Swal.fire(Form)
     }
-
-    render() {
-        return (
-            <div className="tutorial">
-                <button onClick={this.openForm} className="btn-form">
-                    <img src={process.env.PUBLIC_URL +"assets/icon/noel/santa.svg"} alt="" id="icon"/>
-                </button>
-            </div>
-        );
-    }
+    return (
+        <div className="tutorial">
+            <button onClick={openForm} className="btn-form">
+                <img src={process.env.PUBLIC_URL +"assets/icon/noel/santa.svg"} alt="" id="icon"/>
+            </button>
+        </div>
+    );
 }
 
-export default FormSaveList2;
+export default Tutorial;

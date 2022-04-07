@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import database from '../../firebase/firebase.js';
+import database from '../../firebase/firebase';
 import './PlayLists.css';
 import Swal from 'sweetalert2';
 
@@ -14,17 +14,17 @@ const Toast = Swal.mixin({
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
 })
-function PlayLists(props) {
-    const [lists, getLists] = useState([]);
+function PlayLists(props: any) {
+    const [lists, getLists] = useState<any[]>([]);
 
-    function openPlaylist(idList) {
+    function openPlaylist(idList: number) {
         var obj = {
             idList: idList,
             isUpdate: 0
         }
         props.openPlaylist(obj);
     }
-    function delPlaylist(id) {
+    function delPlaylist(id: number) {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -49,14 +49,14 @@ function PlayLists(props) {
         })
     }
     async function getDatabase() {
-        var data = await database.ref('lists').once('value').then(function (snapshot) {
+        let data = await database.ref('lists').once('value').then(function (snapshot) {
             return snapshot.val();
         })
-        var da = Object.entries(data).map(function(item) {
+        let da = Object.entries(data).map(function(item: any[]) {
             item[1].id = item[0];
             return item;
         })
-        var arr = da.map((k) => k[1]);
+        let arr: any = da.map((k) => k[1]);
         //Convert Object to Array
         // var arr = Object.keys(data).map((k) => data[k]);
         getLists(arr);

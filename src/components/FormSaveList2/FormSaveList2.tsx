@@ -1,11 +1,10 @@
 import React from 'react';
-import database from '../../firebase/firebase.js';
+import database from '../../firebase/firebase';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import './FormSaveList2.css';
 
 const MySwal = withReactContent(Swal);
-
 let addForm = {
     title: 'Create PlayList Youtube List',
     showCloseButton: true,
@@ -28,16 +27,16 @@ let addForm = {
         "</div>",
     focusConfirm: false,
     preConfirm: () => ({
-        inputName: document.getElementById('inputName').value,
-        inputId: document.getElementById('inputId').value
+        inputName: document.getElementById('inputName'),
+        inputId: document.getElementById('inputId')
     })
 }
 class FormSaveList2 extends React.Component {
-    constructor(props) {
+    constructor(props: any) {
         super(props);
         this.openFormAdd = this.openFormAdd.bind(this);
     }
-    randString(l) {
+    randString(l: number) {
         var result = '';
         var char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var charLength = char.length;
@@ -46,7 +45,7 @@ class FormSaveList2 extends React.Component {
         }
         return result;
     }
-    convertLink = (str) => {
+    convertLink = (str: string) => {
         var res = '';
         var arr = str.split("list=");
         arr.forEach(el => {
@@ -59,17 +58,17 @@ class FormSaveList2 extends React.Component {
     openFormAdd = () => {
         const addLsit = async () => {
             const swalval = await MySwal.fire(addForm);
-            let v = (swalval && swalval.value) || swalval.dismiss; // eslint-disable-next-line
+            let v: any = (swalval && swalval.value) || swalval.dismiss; // eslint-disable-next-line
             if(v === 'close' || v === 'backdrop' || v === 'esc') {
                 await MySwal.DismissReason.close
             }
             else {
                 if (v && v.inputName && v.inputId || v === 'cancel') { // eslint-disable-line
                     if (v !== 'cancel') {
-                        database().ref('lists/' + this.randString(10)).set({
+                        database.ref('lists/' + this.randString(10)).set({
                             name: v.inputName,
                             listId : this.convertLink(v.inputId)
-                        }, function(error) {
+                        }, function(error: any) {
                             if(error) {
                                 MySwal.fire({ title: 'Eww!', text: 'Have error' + error, icon: "error" });
                             } else {

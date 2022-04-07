@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useRef } from 'react';
 import './Loading.css';
 
-function Loading(props) {
+function Loading(props: { isLoad: any; }) {
     const [isLoading, setIsLoading] = useState(props.isLoad);
     const prevProps = usePrevious(props.isLoad);
     useEffect(() => {
-        function handleStatus(status) {
+        function handleStatus(status: any) {
             setIsLoading(status);
         }
         if( prevProps !== isLoading){
@@ -22,7 +22,7 @@ function Loading(props) {
     )
 }
 
-function usePrevious(value) {
+function usePrevious(value: any) {
     // The ref object is a generic container whose current property is mutable ...
   // ... and can hold any value, similar to an instance property on a class
   const ref = useRef();

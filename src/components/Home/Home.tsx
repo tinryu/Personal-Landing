@@ -10,6 +10,6 @@ function Home() {
             <Calendar/>
             <Player stringId=''/>
         </div>
-    )
+    );
 }
 export default Home;

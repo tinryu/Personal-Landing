@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import './Player.css';
-import database from '../../firebase/firebase.js';
+import database from '../../firebase/firebase';
+
 import PlayLists from '../Playlists/PlayLists';
 import FormSaveList2 from '../FormSaveList2/FormSaveList2';
 import Tutorial from '../Tutorial/Tutorial';
@@ -145,8 +146,10 @@ class Player extends React.Component {
 			}).catch(function(error) {
 				console.log('playlist', error);
 			});
-			token = result.data.nextPageToken;
-			resultArr.push(result.data);
+			if(result && result.data && result.data.nextPageToken){
+				token = result.data.nextPageToken;
+				resultArr.push(result.data);
+			}
 		}	
 		return resultArr;
 	};
