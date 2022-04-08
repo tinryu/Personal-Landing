@@ -16,8 +16,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import Calendar from '../Calendar/Calendar';
-import Clock from '../Clock/Clock';
 import Player from '../Player/Player';
 const drawerWidth = 240;
 
@@ -83,9 +81,10 @@ export default function Home() {
     return (
         <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="fixed" color="transparent" open={open}>
+        <AppBar position="fixed" color="inherit" open={open}>
             <Toolbar>
                 <IconButton
+                    classes="iconButton"
                     color="inherit"
                     aria-label="open drawer"
                     onClick={handleDrawerOpen}
@@ -140,8 +139,7 @@ export default function Home() {
         </Drawer>
         <Main open={open}>
             <div className="wrapper">
-                <Clock/>
-                <Calendar/>
+                
                 <Player stringId=''/>
             </div>
         </Main>

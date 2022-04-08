@@ -3,10 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import './Player.css';
 import database from '../../firebase/firebase';
-
 import PlayLists from '../Playlists/PlayLists';
-import FormSaveList2 from '../FormSaveList2/FormSaveList2';
-import Tutorial from '../Tutorial/Tutorial';
 
 const apiKey = process.env.REACT_APP_API_KEY_YT;
 var repeat = document.getElementsByClassName('btn-repeat')[0];
@@ -405,18 +402,21 @@ class Player extends React.Component {
 			animation: this.state.isTogglePlay ? 'rotate-circle 10s linear infinite' : 'none'
 		}
         return (
-			<div className="player">
-				<div id="player"></div>
-				<div className="vinyl-player" style={{display: this.state.isToggleList ? 'none' : 'block'}}>
-					<div className="medias" style={{display: this.state.isToggleSong ?  'none': 'block'}}>
-						<div className="nametag" id="bgnametag" style={divStyle}></div>
-						<img src={process.env.PUBLIC_URL +"assets/icon/kim.svg"} alt="" id="kim" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
-						<img src={process.env.PUBLIC_URL +"assets/icon/circel.svg"} alt="" id="circel" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
-						<img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/music.svg"} alt="open" id="open" title="music lists"/>
+			<div className='radio'>
+				<div className="player">
+					<div id="player"></div>
+					<div className="navBar">
+						<img onClick={this.openSongs} src={this.state.isToggleSong ? process.env.PUBLIC_URL +"assets/icon/cancel.png" : process.env.PUBLIC_URL +"assets/icon/music.svg"} alt="open" id="open" title="music lists"/>
 					</div>
-				</div>
-				<div className="songs" style={{display: this.state.isToggleSong ?  'block': 'none'}}>
-						<img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/cancel.png"} alt="open" id="close" title="close"/>
+					<div className="vinyl-player" style={{display: this.state.isToggleList ? 'none' : 'block'}}>
+						<div className="medias" style={{display: this.state.isToggleSong ?  'none': 'block'}}>
+							<div className="nametag" id="bgnametag" style={divStyle}></div>
+							<img src={process.env.PUBLIC_URL +"assets/icon/kim.svg"} alt="" id="kim" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
+							<img src={process.env.PUBLIC_URL +"assets/icon/circel.svg"} alt="" id="circel" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>							
+						</div>
+					</div>
+					<div className="songs" style={{display: this.state.isToggleSong ?  'block': 'none'}}>
+						{/* <img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/cancel.png"} alt="open" id="close" title="close"/> */}
 						<div className="containerSongs">
 							{this.state.listVid.map((item, key) =>
 								<div className="itemList" key={key}>
@@ -425,40 +425,35 @@ class Player extends React.Component {
 							)}
 						</div>
 					</div>
-				<div className="feaList" style={{display: this.state.isToggleList ? 'block' : 'none'}}>
-					<PlayLists openPlaylist={this.openPlaylist}/>
+					<div className="feaList" style={{display: this.state.isToggleList ? 'block' : 'none'}}>
+						<PlayLists openPlaylist={this.openPlaylist}/>
+					</div>
+					<div className="layer">
+						<div className="prev">
+							<button onClick={this.prevSong} className="btn-prev" aria-label="prev" style={{display: this.state.isToggle ? 'block' : 'none'}}><img src={process.env.PUBLIC_URL +"assets/icon/prev.svg"} alt=""/></button>
+						</div>
+						<div className="play">
+							<button onClick={this.changeStatusPlay} id="btn" className={this.state.isTogglePlay ? 'pauseM' : 'playM'} aria-label="play" style={{display: this.state.isToggle ? 'block' : 'none'}}>
+								<img src={this.state.isTogglePlay ? process.env.PUBLIC_URL +"assets/icon/pause.svg" : process.env.PUBLIC_URL +"assets/icon/play.svg"} alt="" id="icon"/>
+							</button>
+						</div>
+						<div className="next">
+							<button onClick={this.nextSong} className="btn-next" aria-label="next" style={{display: this.state.isToggle ? 'block' : 'none'}}><img src={process.env.PUBLIC_URL +"assets/icon/next.svg"} alt=""/></button>
+						</div>
+						{/* <div className="repeat">
+							<button className="btn-repeat" aria-label="repeat" style={{display: this.state.isToggle ? 'block' : 'none'}}><img src={process.env.PUBLIC_URL +"assets/icon/repeat.svg"} alt=""/></button>
+						</div> */}
+						<div className="vol">
+							<input onChange={this.changeVolume} type="range" id="volume" name="volume" value={this.state.volume} min="0" max="100" />
+						</div>
+					</div>
+					<div className="title" id="title">{this.state.title}</div>
+					<img onClick={this.openList} src={this.state.isToggleList ? process.env.PUBLIC_URL +"assets/icon/cancel.png" : process.env.PUBLIC_URL +"assets/icon/list-text.png"} alt="" id="btnList"/>
 				</div>
-				<div className="layer">
-					<div className="prev">
-						<button onClick={this.prevSong} className="btn-prev" aria-label="prev" style={{display: this.state.isToggle ? 'block' : 'none'}}><img src={process.env.PUBLIC_URL +"assets/icon/prev.svg"} alt=""/></button>
-					</div>
-					<div className="play">
-						<button onClick={this.changeStatusPlay} id="btn" className={this.state.isTogglePlay ? 'pauseM' : 'playM'} aria-label="play" style={{display: this.state.isToggle ? 'block' : 'none'}}>
-							<img src={this.state.isTogglePlay ? process.env.PUBLIC_URL +"assets/icon/pause.svg" : process.env.PUBLIC_URL +"assets/icon/play.svg"} alt="" id="icon"/>
-						</button>
-					</div>
-					<div className="next">
-						<button onClick={this.nextSong} className="btn-next" aria-label="next" style={{display: this.state.isToggle ? 'block' : 'none'}}><img src={process.env.PUBLIC_URL +"assets/icon/next.svg"} alt=""/></button>
-					</div>
-					{/* <div className="repeat">
-						<button className="btn-repeat" aria-label="repeat" style={{display: this.state.isToggle ? 'block' : 'none'}}><img src={process.env.PUBLIC_URL +"assets/icon/repeat.svg"} alt=""/></button>
-					</div> */}
-					<div className="vol">
-						<input onChange={this.changeVolume} type="range" id="volume" name="volume" value={this.state.volume} min="0" max="100" />
-					</div>
-				</div>
-				<div className="title" id="title">{this.state.title}</div>
-				<div className="btn-tool">
-					<FormSaveList2/>
-					<div className="playList">
-						<button onClick={this.openList} className="btn-list">
-							<img src={this.state.isToggleList ? process.env.PUBLIC_URL +"assets/icon/cancel.png" : process.env.PUBLIC_URL +"assets/icon/list-text.png"} alt="" id="icon"/>
-						</button>
-					</div>
-					<Tutorial/>
-				</div>
+				
 				<i className="sign">made by TinTruong</i>
 			</div>
+			
         )
     }
 }
