@@ -1,27 +1,25 @@
 #player {
     display: none;
 }
-.navBar{ 
-    position: relative;
-    height: 40px;
-    img#open {
-        animation: heartbeat 10s linear infinite;
-        background-color: #fff;
-        border-radius: 5px;
-        width: 26px;
-        height: 26px;
-        transition: all 0.5s;
-        padding: 5px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
-        &:hover{
-            cursor: pointer;
-            filter: invert(0%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
-        }
+
+img#open {
+    animation: heartbeat 10s linear infinite;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 26px;
+    height: 26px;
+    transition: all 0.5s;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
+    &:hover{
+        cursor: pointer;
+        filter: invert(0%) sepia(1%) saturate(2%) hue-rotate(227deg) brightness(107%) contrast(101%);
     }
 }
+
 .radio {
     img#btnList {
         width: 32px;
