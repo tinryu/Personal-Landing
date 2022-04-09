@@ -406,17 +406,18 @@ class Player extends React.Component {
 				<div className="player">
 					<div id="player"></div>
 					<div className="navBar">
-						<img onClick={this.openSongs} src={this.state.isToggleSong ? process.env.PUBLIC_URL +"assets/icon/cancel.png" : process.env.PUBLIC_URL +"assets/icon/music.svg"} alt="open" id="open" title="music lists"/>
+						
 					</div>
 					<div className="vinyl-player" style={{display: this.state.isToggleList ? 'none' : 'block'}}>
 						<div className="medias" style={{display: this.state.isToggleSong ?  'none': 'block'}}>
 							<div className="nametag" id="bgnametag" style={divStyle}></div>
 							<img src={process.env.PUBLIC_URL +"assets/icon/kim.svg"} alt="" id="kim" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
-							<img src={process.env.PUBLIC_URL +"assets/icon/circel.svg"} alt="" id="circel" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>							
+							<img src={process.env.PUBLIC_URL +"assets/icon/circel.svg"} alt="" id="circel" style={{display: this.state.isToggleList ? 'none' : 'block'}}/>
+							<img onClick={this.openSongs} src={this.state.isToggleSong ? process.env.PUBLIC_URL +"assets/icon/cancel.png" : process.env.PUBLIC_URL +"assets/icon/music.svg"} alt="open" id="open" title="music lists"/>
 						</div>
 					</div>
 					<div className="songs" style={{display: this.state.isToggleSong ?  'block': 'none'}}>
-						{/* <img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/cancel.png"} alt="open" id="close" title="close"/> */}
+						<img onClick={this.openSongs} src={process.env.PUBLIC_URL +"assets/icon/cancel.png"} alt="open" id="close" title="close"/>
 						<div className="containerSongs">
 							{this.state.listVid.map((item, key) =>
 								<div className="itemList" key={key}>
@@ -450,10 +451,7 @@ class Player extends React.Component {
 					<div className="title" id="title">{this.state.title}</div>
 					<img onClick={this.openList} src={this.state.isToggleList ? process.env.PUBLIC_URL +"assets/icon/cancel.png" : process.env.PUBLIC_URL +"assets/icon/list-text.png"} alt="" id="btnList"/>
 				</div>
-				
-				<i className="sign">made by TinTruong</i>
 			</div>
-			
         )
     }
 }
