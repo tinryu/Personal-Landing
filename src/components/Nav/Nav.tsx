@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
+import Typography from '@mui/material/Typography';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Search from '../Search/Search';
 
 const drawerWidth = 240;
 
@@ -51,26 +52,33 @@ export default function Nav(props: Props) {
                 ml: { sm: `${drawerWidth}px` },
             }}
             >
-            <Toolbar>
+                <Toolbar>
                 <IconButton
                     edge="start"
                     color="inherit"
                     aria-label="menu"
                     onClick={handleDrawerToggle}
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2, display: { sm: 'none' } }}
                 >
                 <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap component="div">
-                    Logo
+                <Typography
+                    variant="h6"
+                    noWrap
+                    component="div"
+                    sx={{ display: { xs: 'none', sm: 'block' } }}
+                    >
+                    LOGO
                 </Typography>
-            </Toolbar>
+                <Search/>
+                </Toolbar>
             </AppBar>
             <Box
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
+                
                 <Drawer
                     container={container}
                     variant="temporary"
@@ -83,7 +91,7 @@ export default function Nav(props: Props) {
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
-                    >
+                    > 
                     {drawer}
                 </Drawer>
                 <Drawer
