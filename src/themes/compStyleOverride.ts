@@ -1,10 +1,15 @@
-export default function componentStyleOverrides(theme: any) {
-    const bgColor = theme.colors?.grey50;
+/**
+ * MUI Components whose styles are override as per theme
+ * @param {JsonObject} theme Plain Json Object
+ */
+
+ export function componentStyleOverrides(theme: any) {
     return {
         MuiButton: {
             styleOverrides: {
                 root: {
                     fontWeight: 500,
+                    textTransform: 'capitalize',
                     borderRadius: '4px'
                 }
             }
@@ -18,14 +23,14 @@ export default function componentStyleOverrides(theme: any) {
                     backgroundImage: 'none'
                 },
                 rounded: {
-                    borderRadius: `${theme?.customization?.borderRadius}px`
+                    borderRadius: theme.customization.borderRadius + 'px'
                 }
             }
         },
         MuiCardHeader: {
             styleOverrides: {
                 root: {
-                    color: theme.colors?.textDark,
+                    color: theme.colors.textDark,
                     padding: '24px'
                 },
                 title: {
@@ -102,13 +107,13 @@ export default function componentStyleOverrides(theme: any) {
         MuiOutlinedInput: {
             styleOverrides: {
                 root: {
-                    background: bgColor,
-                    borderRadius: `${theme?.customization?.borderRadius}px`,
+                    background: theme.colors.grey50,
+                    borderRadius: theme.customization.borderRadius + 'px',
                     '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: theme.colors?.grey400
+                        borderColor: theme.colors.grey400
                     },
                     '&:hover $notchedOutline': {
-                        borderColor: theme.colors?.primaryLight
+                        borderColor: theme.colors.primaryLight
                     },
                     '&.MuiInputBase-multiline': {
                         padding: 1
@@ -116,9 +121,9 @@ export default function componentStyleOverrides(theme: any) {
                 },
                 input: {
                     fontWeight: 500,
-                    background: bgColor,
+                    background: theme.colors.grey50,
                     padding: '15.5px 14px',
-                    borderRadius: `${theme?.customization?.borderRadius}px`,
+                    borderRadius: theme.customization.borderRadius + 'px',
                     '&.MuiInputBase-inputSizeSmall': {
                         padding: '10px 14px',
                         '&.MuiInputBase-inputAdornedStart': {
@@ -130,7 +135,7 @@ export default function componentStyleOverrides(theme: any) {
                     paddingLeft: 4
                 },
                 notchedOutline: {
-                    borderRadius: `${theme?.customization?.borderRadius}px`
+                    borderRadius: theme.customization.borderRadius + 'px'
                 }
             }
         },
@@ -138,7 +143,7 @@ export default function componentStyleOverrides(theme: any) {
             styleOverrides: {
                 root: {
                     '&.Mui-disabled': {
-                        color: theme.colors?.grey300
+                        color: theme.colors.grey300
                     }
                 },
                 mark: {
@@ -146,7 +151,7 @@ export default function componentStyleOverrides(theme: any) {
                     width: '4px'
                 },
                 valueLabel: {
-                    color: theme?.colors?.primaryLight
+                    color: theme.colors.primaryLight
                 }
             }
         },
@@ -161,8 +166,8 @@ export default function componentStyleOverrides(theme: any) {
         MuiAvatar: {
             styleOverrides: {
                 root: {
-                    color: theme.colors?.primaryDark,
-                    background: theme.colors?.primary200
+                    color: theme.colors.primaryDark,
+                    background: theme.colors.primary200
                 }
             }
         },
@@ -179,7 +184,7 @@ export default function componentStyleOverrides(theme: any) {
             styleOverrides: {
                 tooltip: {
                     color: theme.paper,
-                    background: theme.colors?.grey700
+                    background: theme.colors.grey700
                 }
             }
         }

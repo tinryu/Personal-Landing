@@ -2,10 +2,9 @@
  * Typography used in theme
  * @param {JsonObject} theme theme customization object
  */
-
-export default function themeTypography(theme: any) {
+ export function themeTypography(theme: any) {
     return {
-        fontFamily: theme?.customization?.fontFamily,
+        fontFamily: theme.customization.fontFamily,
         h6: {
             fontWeight: 500,
             color: theme.heading,
@@ -62,18 +61,15 @@ export default function themeTypography(theme: any) {
             lineHeight: '1.5em',
             color: theme.darkTextPrimary
         },
-        button: {
-            textTransform: 'capitalize'
-        },
         customInput: {
-            marginTop: 1,
-            marginBottom: 1,
+            marginTop: 8,
+            marginBottom: 8,
             '& > label': {
-                top: 23,
+                top: '23px',
                 left: 0,
                 color: theme.grey500,
                 '&[data-shrink="false"]': {
-                    top: 5
+                    top: '5px'
                 }
             },
             '& > div > input': {
@@ -94,7 +90,7 @@ export default function themeTypography(theme: any) {
             padding: '20px',
             marginTop: '88px',
             marginRight: '20px',
-            borderRadius: `${theme?.customization?.borderRadius}px`
+            borderRadius: theme.customization.borderRadius + 'px'
         },
         menuCaption: {
             fontSize: '0.875rem',

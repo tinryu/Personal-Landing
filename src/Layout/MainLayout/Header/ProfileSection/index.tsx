@@ -34,7 +34,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from '../../../../ui-component/cards/MainCard';
 import Transitions from '../../../../ui-component/extended/Transitions';
 import UpgradePlanCard from './UpgradePlanCard';
-import User1 from 'assets/images/users/user-round.svg';
+import User1 from '../../../../../public/assets/icon/dududu.png';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
@@ -43,7 +43,10 @@ import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
 
 const ProfileSection = () => {
     const theme = useTheme();
-    const customization = useSelector((state) => state.customization);
+    interface RootState {
+        customization: any
+      }
+    const customization = useSelector((state: RootState) => state.customization);
     const navigate = useNavigate();
 
     const [sdm, setSdm] = useState(true);
@@ -54,7 +57,7 @@ const ProfileSection = () => {
     /**
      * anchorRef is used on different componets and specifying one type leads to other components throwing an error
      * */
-    const anchorRef = useRef(null);
+    const anchorRef = useRef<HTMLParagraphElement | null>(null);
     const handleLogout = async () => {
         console.log('Logout');
     };
@@ -78,9 +81,9 @@ const ProfileSection = () => {
         setOpen((prevOpen) => !prevOpen);
     };
 
-    const prevOpen = useRef(open);
+    const prevOpen = useRef<null | boolean>(open);
     useEffect(() => {
-        if (prevOpen.current === true && open === false) {
+        if (prevOpen.current === true && open === false && anchorRef.current) {
             anchorRef.current.focus();
         }
 

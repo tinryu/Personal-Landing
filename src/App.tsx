@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
@@ -12,12 +13,10 @@ import themes from './themes';
 import Box from '@mui/material/Box';
 
 export default function App() {
-  const customization = {
-    isOpen: [], // for active default menu
-    fontFamily: `'Roboto', sans-serif`,
-    borderRadius: 12,
-    opened: true
-  };
+  interface RootState {
+    customization: any
+  }
+  const customization = useSelector((state: RootState) => state.customization);
   
   return (
     <div className="App">
