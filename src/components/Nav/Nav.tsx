@@ -48,29 +48,28 @@ export default function Nav(props: Props) {
             <AppBar
             position="fixed"
             sx={{
-                width: { sm: `calc(100% - ${drawerWidth}px)` },
-                ml: { sm: `${drawerWidth}px` },
+                zIndex: (theme) => theme.zIndex.drawer + 1,
             }}
             >
                 <Toolbar>
-                <IconButton
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { sm: 'none' } }}
-                >
-                <MenuIcon />
-                </IconButton>
-                <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ display: { xs: 'none', sm: 'block' } }}
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { sm: 'none' } }}
                     >
-                    LOGO
-                </Typography>
-                <Search/>
+                    <MenuIcon />
+                    </IconButton>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="div"
+                        sx={{ display: { xs: 'none', sm: 'block' } }}
+                        >
+                        LOGO
+                    </Typography>
+                    <Search/>
                 </Toolbar>
             </AppBar>
             <Box
@@ -92,19 +91,6 @@ export default function Nav(props: Props) {
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
                     > 
-                    {drawer}
-                </Drawer>
-                <Drawer
-                    variant="permanent"
-                    sx={{
-                        display: { xs: 'none', sm: 'block' },
-                        '& .MuiDrawer-paper': { 
-                            boxSizing: 'border-box', 
-                            width: drawerWidth 
-                        },
-                    }}
-                    open={mobileOpen}
-                    >
                     {drawer}
                 </Drawer>
             </Box>

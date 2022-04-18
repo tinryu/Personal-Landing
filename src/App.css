@@ -25,20 +25,20 @@ a {
 }
 
 .bg {
-position: fixed;
-top: 0;
-height: 120vh;
-width: 120vw;
-filter: blur(20px);
+  position: fixed;
+  top: 0;
+  height: 120vh;
+  width: 120vw;
+  filter: blur(20px);
 }
 
 .color {
-position: fixed;
- height: 120vh;
- width: 120vw;
- top: 0;
-left: 0;
-background-color: #0007;
+  position: fixed;
+  height: 120vh;
+  width: 120vw;
+  top: 0;
+  left: 0;
+  background-color: #0007;
 }
 
 @keyframes animate {

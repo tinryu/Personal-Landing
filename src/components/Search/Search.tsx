@@ -166,7 +166,7 @@ export default function PrimarySearchAppBar() {
                 />
             </Search>
             <Box sx={{ flexGrow: 1 }} />
-                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                     <Badge badgeContent={4} color="error">
                     <MailIcon />
@@ -190,20 +190,20 @@ export default function PrimarySearchAppBar() {
                     onClick={handleProfileMenuOpen}
                     color="inherit"
                 >
-                    <AccountCircle />
+                <AccountCircle />
                 </IconButton>
-                </Box>
-                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-            >
+            </Box>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                    size="large"
+                    aria-label="show more"
+                    aria-controls={mobileMenuId}
+                    aria-haspopup="true"
+                    onClick={handleMobileMenuOpen}
+                    color="inherit"
+                >
                 <MoreIcon />
-            </IconButton>
+                </IconButton>
             </Box>
         </Toolbar>
         {renderMobileMenu}
