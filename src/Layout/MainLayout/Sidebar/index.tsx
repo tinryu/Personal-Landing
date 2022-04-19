@@ -80,10 +80,4 @@ const Sidebar: React.FC<Props> = ({ drawerOpen, drawerToggle, window })  => {
     );
 };
 
-Sidebar.propTypes = {
-    drawerOpen: PropTypes.bool,
-    drawerToggle: PropTypes.func,
-    window: PropTypes.object
-};
-
 export default Sidebar;

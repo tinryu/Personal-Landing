@@ -23,9 +23,9 @@ export default function App() {
       <StyledEngineProvider injectFirst>
             <ThemeProvider theme={themes(customization)}>
                 <CssBaseline />
-                  <Box className='wrapper'>
-                    <Routes/>
-                  </Box>
+                <Box className='wrapper'>
+                  <Routes/>
+                </Box>
             </ThemeProvider>
         </StyledEngineProvider>
     </div>

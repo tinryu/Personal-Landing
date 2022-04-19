@@ -46,7 +46,7 @@ const NavItem: React.FC<propNav> = ({item, level}) => {
     }
     
     let listItemProps = {
-        component: forwardRef((props, ref: any) => <Link ref={ref} {...props} to={`${config.basename}${item.url}`} target={itemTarget} />)
+        component: forwardRef((props, ref: any) => <Link ref={ref} {...props} to={`${item.url}`} target={itemTarget} />)
     };
     // if (item?.external) {
     //     listItemProps = { component: 'a', href: item.url, target: itemTarget };
