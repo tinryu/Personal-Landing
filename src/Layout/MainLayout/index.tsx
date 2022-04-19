@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 // material-ui
@@ -7,19 +7,19 @@ import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 
 // project imports
-// import Breadcrumbs from '../../ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
-// import navigation from '../../menu-items';
 import { drawerWidth } from '../../store/constant';
-// import { SET_MENU } from 'store/actions';
+import { SET_MENU } from '../../store/actions';
+import type { RootState } from '../../store';
 
 // assets
 // import { IconChevronRight } from '@tabler/icons';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+    theme?: any;
     open?: boolean;
   }>(({ theme, open }) => ({
     ...theme.typography.mainContent,
@@ -67,11 +67,11 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
-    const theme = useTheme();
+    const theme: any = useTheme();
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
 
     // Handle left drawer
-    const leftDrawerOpened = useSelector((state) => state.customization.opened);
+    const leftDrawerOpened = useSelector((state: RootState | any) => state.customization.opened);
     const dispatch = useDispatch();
     const handleLeftDrawerToggle = () => {
         dispatch({ type: SET_MENU, opened: !leftDrawerOpened });

@@ -3,13 +3,8 @@ import React, {FC} from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Avatar, Box, ButtonBase } from '@mui/material';
 
-// project imports
-import SearchSection from './SearchSection';
-import ProfileSection from './ProfileSection';
-import NotificationSection from './NotificationSection';
-
 // assets
-// import { IconMenu2 } from '@tabler/icons';
+import { IconMenu2 } from '@tabler/icons';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 interface Props {
@@ -17,7 +12,7 @@ interface Props {
 };
 
 const Header: FC<Props> = ({ handleLeftDrawerToggle }) => {
-    const theme = useTheme();
+    const theme: any = useTheme();
 
     return (
         <>
@@ -51,19 +46,12 @@ const Header: FC<Props> = ({ handleLeftDrawerToggle }) => {
                         onClick={handleLeftDrawerToggle}
                         color="inherit"
                     >
-                        {/* <IconMenu2 stroke={1.5} size="1.3rem" /> */}
+                        <IconMenu2 stroke={1.5} size="1.3rem" />
                     </Avatar>
                 </ButtonBase>
             </Box>
-
-            {/* header search */}
-            <SearchSection />
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ flexGrow: 1 }} />
-
-            {/* notification & profile */}
-            <NotificationSection />
-            <ProfileSection />
         </>
     );
 };

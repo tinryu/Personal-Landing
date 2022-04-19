@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import React, { FC } from "react";
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -6,18 +6,17 @@ import { Divider, List, Typography } from '@mui/material';
 
 // project imports
 import NavItem from '../NavItem';
-import NavCollapse from '../NavCollapse';
 
 // ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
-
-const NavGroup = ({ item }) => {
-    const theme = useTheme();
+interface IProps {
+    item: any;
+}
+const NavGroup: React.FC<IProps> = ({ item }) => {
+    const theme: any = useTheme();
 
     // menu list collapse & items
     const items = item.children?.map((menu: any) => {
         switch (menu.type) {
-            case 'collapse':
-                return <NavCollapse key={menu.id} menu={menu} level={1} />;
             case 'item':
                 return <NavItem key={menu.id} item={menu} level={1} />;
             default:
@@ -52,10 +51,6 @@ const NavGroup = ({ item }) => {
             <Divider sx={{ mt: 0.25, mb: 1.25 }} />
         </>
     );
-};
-
-NavGroup.propTypes = {
-    item: PropTypes.object
 };
 
 export default NavGroup;

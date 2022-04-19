@@ -91,12 +91,12 @@ const Transitions = forwardRef<Ref, Propps>((props, ref) => {
     );
 });
 
-interface propTypes {
-    children: React.ReactNode
-    type: 'grow' | 'fade' | 'collapse' | 'slide' | 'zoom'
-    position: 'top-left' | 'top-right' | 'top' | 'bottom-left' | 'bottom-right' | 'bottom'
-    direction: 'up' | 'down' | 'left' | 'right'
-};
+// interface propTypes {
+//     children: React.ReactNode
+//     type: 'grow' | 'fade' | 'collapse' | 'slide' | 'zoom'
+//     position: 'top-left' | 'top-right' | 'top' | 'bottom-left' | 'bottom-right' | 'bottom'
+//     direction: 'up' | 'down' | 'left' | 'right'
+// };
 
 Transitions.defaultProps = {
     type: 'grow',

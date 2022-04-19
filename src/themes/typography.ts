@@ -6,7 +6,7 @@
     return {
         fontFamily: theme.customization.fontFamily,
         h6: {
-            fontWeight: 500,
+            fontWeight: 500, 
             color: theme.heading,
             fontSize: '0.75rem'
         },

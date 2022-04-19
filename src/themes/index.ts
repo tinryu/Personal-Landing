@@ -52,7 +52,7 @@ export const theme = (customization: any) =>{
             }
         },
         typography: themeTypography(themeOption),
-        components: componentStyleOverrides(themeOption)
+        // components: componentStyleOverrides(themeOption)
     });
 }
 
