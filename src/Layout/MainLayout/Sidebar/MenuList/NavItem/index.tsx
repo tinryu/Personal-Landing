@@ -8,7 +8,6 @@ import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, u
 
 // project imports
 import { MENU_OPEN, SET_MENU } from '../../../../../store/actions';
-import config from '../../../../../config';
 
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';

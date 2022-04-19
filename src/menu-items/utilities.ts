@@ -1,13 +1,13 @@
 // assets
-// import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
+import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
 
 // constant
-// const icons = {
-//     IconTypography,
-//     IconPalette,
-//     IconShadow,
-//     IconWindmill
-// };
+const icons = {
+    IconTypography,
+    IconPalette,
+    IconShadow,
+    IconWindmill
+};
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
@@ -21,7 +21,7 @@ const utilities = {
             title: 'Typography',
             type: 'item',
             url: '/utils/util-typography',
-            // icon: icons.IconTypography,
+            icon: icons.IconTypography,
             breadcrumbs: false
         },
         {
@@ -29,7 +29,7 @@ const utilities = {
             title: 'Color',
             type: 'item',
             url: '/utils/util-color',
-            // icon: icons.IconPalette,
+            icon: icons.IconPalette,
             breadcrumbs: false
         },
         {
@@ -37,14 +37,14 @@ const utilities = {
             title: 'Shadow',
             type: 'item',
             url: '/utils/util-shadow',
-            // icon: icons.IconShadow,
+            icon: icons.IconShadow,
             breadcrumbs: false
         },
         {
             id: 'icons',
             title: 'Icons',
             type: 'collapse',
-            // icon: icons.IconWindmill,
+            icon: icons.IconWindmill,
             children: [
                 {
                     id: 'tabler-icons',

@@ -5,6 +5,8 @@ import { Outlet } from 'react-router-dom';
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
+import Breadcrumbs from '../../ui-component/extended/Breadcrumbs';
+import navigation from '../../menu-items';
 
 // project imports
 import Header from './Header';
@@ -12,10 +14,9 @@ import Sidebar from './Sidebar';
 import Customization from '../Customization';
 import { drawerWidth } from '../../store/constant';
 import { SET_MENU } from '../../store/actions';
-import type { RootState } from '../../store';
 
 // assets
-// import { IconChevronRight } from '@tabler/icons';
+import { IconChevronRight } from '@tabler/icons';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
@@ -71,6 +72,9 @@ const MainLayout = () => {
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
 
     // Handle left drawer
+    interface RootState {
+        customization: any
+    }
     const leftDrawerOpened = useSelector((state: RootState | any) => state.customization.opened);
     const dispatch = useDispatch();
     const handleLeftDrawerToggle = () => {
@@ -107,7 +111,7 @@ const MainLayout = () => {
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened}>
                 {/* breadcrumb */}
-                {/* <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign /> */}
+                <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign card={false} divider={false} icons={false} maxItems={0} titleBottom={false} />
                 <Outlet />
             </Main>
             <Customization />

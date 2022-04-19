@@ -1,10 +1,10 @@
 // assets
-// import { IconKey } from '@tabler/icons';
+import { IconKey } from '@tabler/icons';
 
 // constant
-// const icons = {
-//     IconKey
-// };
+const icons = {
+    IconKey
+};
 
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
 
@@ -18,7 +18,7 @@ const pages = {
             id: 'authentication',
             title: 'Authentication',
             type: 'collapse',
-            // icon: icons.IconKey,
+            icon: icons.IconKey,
 
             children: [
                 {
