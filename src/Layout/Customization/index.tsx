@@ -3,13 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Drawer, Fab, Grid, Tooltip } from '@mui/material';
-// import { IconSettings } from '@tabler/icons';
+import { Drawer,
+    Fab,
+    FormControl,
+    FormControlLabel,
+    Grid,
+    IconButton,
+    Radio,
+    RadioGroup,
+    Slider,
+    Tooltip,
+    Typography
+} from '@mui/material';
+import { IconSettings } from '@tabler/icons';
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 // project imports
+import SubCard from '../../ui-component/cards/SubCard';
 import { SET_BORDER_RADIUS, SET_FONT_FAMILY } from '../../store/actions';
 import { gridSpacing } from '../../store/constant';
 
@@ -99,6 +111,9 @@ const Customization = () => {
                         zIndex: theme.zIndex.speedDial
                     }}
                 >
+                    <IconButton color="inherit" size="large" disableRipple>
+                        <IconSettings />
+                    </IconButton>
                 </Fab>
             </Tooltip>
 
@@ -116,9 +131,80 @@ const Customization = () => {
                     <Grid container spacing={gridSpacing} sx={{ p: 3 }}>
                         <Grid item xs={12}>
                             {/* font family */}
+                            <SubCard title="Font Family">
+                                <FormControl>
+                                    <RadioGroup
+                                        aria-label="font-family"
+                                        value={fontFamily}
+                                        onChange={(e) => setFontFamily(e.target.value)}
+                                        name="row-radio-buttons-group"
+                                    >
+                                        <FormControlLabel
+                                            value="Roboto"
+                                            control={<Radio />}
+                                            label="Roboto"
+                                            sx={{
+                                                '& .MuiSvgIcon-root': { fontSize: 28 },
+                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                                            }}
+                                        />
+                                        <FormControlLabel
+                                            value="Poppins"
+                                            control={<Radio />}
+                                            label="Poppins"
+                                            sx={{
+                                                '& .MuiSvgIcon-root': { fontSize: 28 },
+                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                                            }}
+                                        />
+                                        <FormControlLabel
+                                            value="Inter"
+                                            control={<Radio />}
+                                            label="Inter"
+                                            sx={{
+                                                '& .MuiSvgIcon-root': { fontSize: 28 },
+                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                                            }}
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+                            </SubCard>
                         </Grid>
                         <Grid item xs={12}>
                             {/* border radius */}                            
+                            <SubCard title="Border Radius">
+                                <Grid item xs={12} container spacing={2} alignItems="center" sx={{ mt: 2.5 }}>
+                                    <Grid item>
+                                        <Typography variant="h6" color="secondary">
+                                            4px
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Slider
+                                            size="small"
+                                            color="secondary"
+                                            value={borderRadius}
+                                            onChange={handleBorderRadius}
+                                            valueLabelDisplay="on"
+                                            aria-labelledby="discrete-slider-small-steps"
+                                            marks
+                                            step={2}
+                                            min={4}
+                                            max={24}
+                                            sx={{
+                                                '& .MuiSlider-valueLabel': {
+                                                    color: 'secondary.light'
+                                                }
+                                            }}
+                                        />
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h6" color="secondary">
+                                            24px
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            </SubCard>
                         </Grid>
                     </Grid>
                 </PerfectScrollbar>
