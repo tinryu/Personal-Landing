@@ -12,18 +12,18 @@ const headerSX = {
 // ==============================|| CUSTOM MAIN CARD ||============================== //
 
 type Propps = {
-    border: boolean,
-    boxShadow: boolean,
-    children: React.ReactNode,
-    content: boolean,
-    contentClass: string,
-    contentSX: object,
-    darkTitle: boolean,
-    secondary: React.ReactNode | string | object,
-    shadow: string,
-    sx: object,
-    title: React.ReactNode | string | object
-    others: any
+    border?: boolean,
+    boxShadow?: boolean,
+    children?: React.ReactNode,
+    content?: boolean,
+    contentClass?: string,
+    contentSX?: object,
+    darkTitle?: boolean,
+    secondary?: React.ReactNode | string | object,
+    shadow?: string,
+    sx?: object,
+    title?: React.ReactNode | string | object
+    others?: any
 };
 export type Ref = HTMLButtonElement;
 const MainCard = forwardRef<Ref, Propps>((props,ref) => {

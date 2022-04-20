@@ -5,24 +5,28 @@ import MuiAvatar from '@mui/material/Avatar';
 
 // ==============================|| AVATAR ||============================== //
 type Avatar = PropsWithChildren<{
-    className: string,
-    color: string,
-    outline: boolean,
-    size: string,
-    sx: object,
+    alt?: string,
+    target?: string,
+    href?: string,
+    className?: string,
+    color?: string,
+    outline?: boolean,
+    size?: string,
+    sx?: object,
+    // others: any,
 }>;
-const Avatar: React.FC<Avatar> = ({ color, outline, size, sx, ...others }) => {
+const Avatar: React.FC<Avatar> = (props) => {
     const theme: any = useTheme();
 
-    const colorSX = color && !outline && { color: theme.palette.background.paper, bgcolor: `${color}.main` };
-    const outlineSX = outline && {
-        color: color ? `${color}.main` : `primary.main`,
+    const colorSX = props.color && !props.outline && { color: theme.palette.background.paper, bgcolor: `${props.color}.main` };
+    const outlineSX = props.outline && {
+        color: props.color ? `${props.color}.main` : `primary.main`,
         bgcolor: theme.palette.background.paper,
         border: '2px solid',
-        borderColor: color ? `${color}.main` : `primary.main`
+        borderColor: props.color ? `${props.color}.main` : `primary.main`
     };
     let sizeSX = {};
-    switch (size) {
+    switch (props.size) {
         case 'badge':
             sizeSX = {
                 width: theme.spacing(3.5),
@@ -63,7 +67,7 @@ const Avatar: React.FC<Avatar> = ({ color, outline, size, sx, ...others }) => {
             sizeSX = {};
     }
 
-    return <MuiAvatar sx={{ ...colorSX, ...outlineSX, ...sizeSX, ...sx }} {...others} />;
+    return <MuiAvatar sx={{ ...colorSX, ...outlineSX, ...sizeSX, ...props.sx }}/>;
 };
 
 export default Avatar;
