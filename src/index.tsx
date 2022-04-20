@@ -7,7 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from '../src/store';
 
-import 'assets/scss/style.scss';
+import './assets/scss/style.scss';
 
 ReactDOM.render(
   <Provider store={store}>

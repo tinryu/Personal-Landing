@@ -10,7 +10,8 @@ import Routes from './routes';
 
 // defaultTheme
 import themes from './themes';
-import Box from '@mui/material/Box';
+// project imports
+import { NavigationScroll } from '../src/Layout/NavigationScroll';
 
 export default function App() {
   interface RootState {
@@ -23,9 +24,9 @@ export default function App() {
       <StyledEngineProvider injectFirst>
             <ThemeProvider theme={themes(customization)}>
                 <CssBaseline />
-                <Box className='wrapper'>
+                <NavigationScroll>
                   <Routes/>
-                </Box>
+                </NavigationScroll>
             </ThemeProvider>
         </StyledEngineProvider>
     </div>
